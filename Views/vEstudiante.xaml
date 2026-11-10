@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:cVeraS6.Models"
+             x:Class="cVeraS6.Views.vEstudiante"
+             Title="vEstudiante">
+    <Grid Padding="15"
+          RowDefinitions="Auto,Auto,*"
+          RowSpacing="0">
+        <Label Grid.Row="0"
+            Text="SEMANA 6: Crud Estudiante - Christopher Vera"
+            FontSize="20"
+             FontAttributes="Bold"
+             Margin="0,0,0,12"
+            HorizontalOptions="Center" />
+
+        <!-- Encabezado de la tabla -->
+        <Grid Grid.Row="1"
+              ColumnDefinitions="70,*,*,70"
+              ColumnSpacing="0">
+            <Border Grid.Column="0" BackgroundColor="LightGray" Stroke="Gray" Padding="5">
+                <Label Text="Código" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+            </Border>
+            <Border Grid.Column="1" BackgroundColor="LightGray" Stroke="Gray" Padding="5">
+                <Label Text="Nombre" FontAttributes="Bold" />
+            </Border>
+            <Border Grid.Column="2" BackgroundColor="LightGray" Stroke="Gray" Padding="5">
+                <Label Text="Apellido" FontAttributes="Bold" />
+            </Border>
+            <Border Grid.Column="3" BackgroundColor="LightGray" Stroke="Gray" Padding="5">
+                <Label Text="Edad" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+            </Border>
+        </Grid>
+
+        <!-- Filas obtenidas desde el servicio web -->
+        <CollectionView Grid.Row="2"
+                        x:Name="coleccionEstudiantes"
+                        ItemsLayout="VerticalList"
+                        SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:Estudiante">
+                    <Grid ColumnDefinitions="70,*,*,70"
+                          ColumnSpacing="0">
+                        <Border Grid.Column="0" Stroke="LightGray" Padding="5">
+                            <Label Text="{Binding codigo}" HorizontalTextAlignment="Center" />
+                        </Border>
+                        <Border Grid.Column="1" Stroke="LightGray" Padding="5">
+                            <Label Text="{Binding nombre}" />
+                        </Border>
+                        <Border Grid.Column="2" Stroke="LightGray" Padding="5">
+                            <Label Text="{Binding apellido}" />
+                        </Border>
+                        <Border Grid.Column="3" Stroke="LightGray" Padding="5">
+                            <Label Text="{Binding edad}" HorizontalTextAlignment="Center" />
+                        </Border>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+            <CollectionView.EmptyView>
+                <Label Text="No hay estudiantes para mostrar."
+                       Padding="10"
+                       HorizontalTextAlignment="Center" />
+            </CollectionView.EmptyView>
+        </CollectionView>
+    </Grid>
+</ContentPage>
