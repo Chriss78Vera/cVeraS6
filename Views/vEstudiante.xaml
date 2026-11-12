@@ -5,7 +5,7 @@
              x:Class="cVeraS6.Views.vEstudiante"
              Title="vEstudiante">
     <Grid Padding="15"
-          RowDefinitions="Auto,Auto,*"
+          RowDefinitions="Auto,Auto,*,Auto"
           RowSpacing="0">
         <Label Grid.Row="0"
             Text="SEMANA 6: Crud Estudiante - Christopher Vera"
@@ -36,7 +36,8 @@
         <CollectionView Grid.Row="2"
                         x:Name="coleccionEstudiantes"
                         ItemsLayout="VerticalList"
-                        SelectionMode="None">
+                        SelectionMode="Single"
+                        SelectionChanged="coleccionEstudiantes_SelectionChanged">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:Estudiante">
                     <Grid ColumnDefinitions="70,*,*,70"
@@ -62,5 +63,13 @@
                        HorizontalTextAlignment="Center" />
             </CollectionView.EmptyView>
         </CollectionView>
+        <HorizontalStackLayout Grid.Row="3"
+                               Margin="0,12,0,0"
+                               Spacing="10"
+                               HorizontalOptions="Center">
+            <Button x:Name="btnAgregarEstudiante"
+                    Text="Agregar"
+                    Clicked="btnAgregarEstudiante_Clicked"/>
+        </HorizontalStackLayout>
     </Grid>
 </ContentPage>

@@ -6,7 +6,7 @@ namespace cVeraS6.Views;
 
 public partial class vEstudiante : ContentPage
 {
-    public const string Url = "http://10.2.14.146/vw_uisrael/post.php";
+    public const string Url = "http://10.2.4.16/vw_uisrael/post.php";
     private readonly HttpClient client = new();
     private readonly ObservableCollection<Estudiante> _estudiantes = [];
 
@@ -39,5 +39,21 @@ public partial class vEstudiante : ContentPage
         {
             await DisplayAlertAsync("Error", $"No se pudieron cargar los estudiantes: {ex.Message}", "Aceptar");
         }
+    }
+
+    private async void btnAgregarEstudiante_Clicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new vNuevoEstudiante());
+    }
+
+    private async void coleccionEstudiantes_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (e.CurrentSelection.FirstOrDefault() is not Estudiante estudianteSeleccionado)
+        {
+            return;
+        }
+
+        coleccionEstudiantes.SelectedItem = null;
+        await Navigation.PushAsync(new vEditarEstudiante(estudianteSeleccionado));
     }
 }

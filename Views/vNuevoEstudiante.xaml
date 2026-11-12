@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="cVeraS6.Views.vNuevoEstudiante"
+             Title="Nuevo estudiante">
+    <VerticalStackLayout
+        Spacing="15"
+        Padding="20">
+        <Label 
+            Text="Agregar nuevo estudiante"
+            FontSize="22"
+            FontAttributes="Bold"
+            HorizontalOptions="Center" />
+        <Grid RowSpacing="12" ColumnSpacing="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Text="Nombre" Grid.Row="0" Grid.Column="0" VerticalOptions="Center"/>
+            <Entry x:Name="txtNombre" Placeholder="Ingresa el nombre" Grid.Row="0" Grid.Column="1"/>
+            <Label Text="Apellido" Grid.Row="1" Grid.Column="0" VerticalOptions="Center"/>
+            <Entry x:Name="txtApellido" Placeholder="Ingresa el apellido" Grid.Row="1" Grid.Column="1"/>
+            <Label Text="Edad" Grid.Row="2" Grid.Column="0" VerticalOptions="Center"/>
+            <Entry x:Name="txtEdad" Placeholder="Ingresa la edad" Grid.Row="2" Grid.Column="1" Keyboard="Numeric"/>
+
+            <Button x:Name="btnAgregar"
+                    Text="Guardar estudiante"
+                    Grid.Row="3"
+                    Grid.ColumnSpan="2"
+                    Margin="0,8,0,0"
+                    Clicked="btnAgregar_Clicked"/>
+        </Grid>
+    </VerticalStackLayout>
+</ContentPage>
